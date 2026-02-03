@@ -2,6 +2,8 @@
 
 import { useAccount } from "wagmi";
 import Header from "@/components/Header";
+import BalanceCard from "@/components/BalanceCard";
+import TokenList from "@/components/TokenList";
 
 export default function Home() {
   const { isConnected } = useAccount();
@@ -11,8 +13,11 @@ export default function Home() {
       <Header />
       <main className="mx-auto max-w-7xl px-6 py-8">
         {isConnected ? (
-          <div className="text-center text-zinc-400">
-            <p className="text-lg">지갑이 연결되었습니다. 대시보드를 불러오는 중...</p>
+          <div className="grid gap-6 md:grid-cols-2">
+            <BalanceCard />
+            <div className="md:col-span-2">
+              <TokenList />
+            </div>
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center gap-4 pt-32">
