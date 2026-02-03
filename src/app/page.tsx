@@ -4,6 +4,7 @@ import { useAccount } from "wagmi";
 import Header from "@/components/Header";
 import BalanceCard from "@/components/BalanceCard";
 import TokenList from "@/components/TokenList";
+import TransactionHistory from "@/components/TransactionHistory";
 
 export default function Home() {
   const { isConnected } = useAccount();
@@ -17,6 +18,9 @@ export default function Home() {
             <BalanceCard />
             <div className="md:col-span-2">
               <TokenList />
+            </div>
+            <div className="md:col-span-2">
+              <TransactionHistory />
             </div>
           </div>
         ) : (
