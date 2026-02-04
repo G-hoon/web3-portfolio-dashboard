@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import BalanceCard from "@/components/BalanceCard";
 import TokenList from "@/components/TokenList";
 import TransactionHistory from "@/components/TransactionHistory";
+import PortfolioChart from "@/components/PortfolioChart";
 
 export default function Home() {
   const { isConnected } = useAccount();
@@ -16,6 +17,7 @@ export default function Home() {
         {isConnected ? (
           <div className="grid gap-6 md:grid-cols-2">
             <BalanceCard />
+            <PortfolioChart />
             <div className="md:col-span-2">
               <TokenList />
             </div>
