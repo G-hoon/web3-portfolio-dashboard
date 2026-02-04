@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Web3 Portfolio Dashboard
 
-## Getting Started
+블록체인 지갑을 연결하고, 온체인 자산 데이터를 조회하여 포트폴리오를 시각화하는 대시보드입니다.
 
-First, run the development server:
+## 주요 기능
+
+- **지갑 연결** - MetaMask, WalletConnect, Coinbase Wallet 등 멀티 지갑 지원
+- **ETH 잔액 조회** - 네이티브 토큰 잔액 실시간 조회
+- **ERC-20 토큰 목록** - 보유 토큰의 이름, 심볼, 로고, 잔액 표시
+- **트랜잭션 히스토리** - 최근 송금/수신 내역 및 Etherscan 링크 연동
+- **포트폴리오 시각화** - 자산 분포 도넛 차트
+
+## 기술 스택
+
+| 영역 | 기술 |
+|------|------|
+| Framework | Next.js (App Router) |
+| Language | TypeScript |
+| Web3 | wagmi, viem |
+| Wallet UI | RainbowKit |
+| 상태관리 | TanStack Query |
+| 차트 | Recharts |
+| 스타일 | Tailwind CSS |
+| Blockchain API | Alchemy SDK |
+
+## 시작하기
+
+### 사전 준비
+
+1. [Alchemy](https://dashboard.alchemy.com)에서 API Key 발급
+2. [WalletConnect](https://cloud.walletconnect.com)에서 Project ID 발급
+
+### 설치 및 실행
 
 ```bash
+# 의존성 설치
+npm install
+
+# 환경 변수 설정
+cp .env.local.example .env.local
+# .env.local 파일에 API Key와 Project ID 입력
+
+# 개발 서버 실행
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[http://localhost:3000](http://localhost:3000)에서 확인할 수 있습니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 환경 변수
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+NEXT_PUBLIC_ALCHEMY_API_KEY=your_alchemy_api_key
+NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=your_walletconnect_project_id
+```
 
-## Learn More
+## 프로젝트 구조
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── layout.tsx          # 루트 레이아웃
+│   ├── page.tsx            # 메인 페이지
+│   ├── providers.tsx       # Web3 Provider 통합
+│   └── globals.css         # 글로벌 스타일
+├── components/
+│   ├── Header.tsx          # 헤더 + 지갑 연결 버튼
+│   ├── BalanceCard.tsx     # ETH 잔액 카드
+│   ├── TokenList.tsx       # ERC-20 토큰 목록
+│   ├── TransactionHistory.tsx  # 트랜잭션 히스토리
+│   └── PortfolioChart.tsx  # 자산 분포 차트
+├── hooks/
+│   ├── useWalletBalance.ts # ETH 잔액 조회
+│   ├── useTokenBalances.ts # ERC-20 토큰 잔액 조회
+│   └── useTransactions.ts  # 트랜잭션 조회
+└── lib/
+    ├── wagmi.ts            # wagmi 설정
+    └── alchemy.ts          # Alchemy SDK 설정
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 배포
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Vercel을 통해 배포할 수 있습니다. 환경 변수를 Vercel 프로젝트 설정에 추가한 뒤 배포하세요.
