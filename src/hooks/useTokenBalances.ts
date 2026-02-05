@@ -1,7 +1,7 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import { useAccount } from "wagmi";
+import { useQuery, UseQueryResult } from "@tanstack/react-query";
+import { useConnection } from "wagmi";
 import { alchemy } from "@/lib/alchemy";
 
 export interface TokenBalance {
@@ -13,8 +13,8 @@ export interface TokenBalance {
   decimals: number;
 }
 
-export function useTokenBalances() {
-  const { address } = useAccount();
+export function useTokenBalances(): UseQueryResult<TokenBalance[], Error> {
+  const { address } = useConnection();
 
   return useQuery<TokenBalance[]>({
     queryKey: ["tokenBalances", address],
@@ -24,9 +24,7 @@ export function useTokenBalances() {
       const balances = await alchemy.core.getTokenBalances(address);
 
       const nonZeroBalances = balances.tokenBalances.filter(
-        (token) =>
-          token.tokenBalance &&
-          BigInt(token.tokenBalance) > 0n
+        (token) => token.tokenBalance && BigInt(token.tokenBalance) > 0n
       );
 
       const tokenDetails = await Promise.all(
@@ -57,9 +55,7 @@ export function useTokenBalances() {
         })
       );
 
-      return tokenDetails.filter(
-        (token) => parseFloat(token.balance) > 0
-      );
+      return tokenDetails.filter((token) => parseFloat(token.balance) > 0);
     },
     enabled: !!address,
     staleTime: 30_000,

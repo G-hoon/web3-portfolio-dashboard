@@ -1,10 +1,10 @@
 "use client";
 
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 
 export default function Header() {
-  const { chain } = useAccount();
+  const { chain } = useConnection();
 
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md">

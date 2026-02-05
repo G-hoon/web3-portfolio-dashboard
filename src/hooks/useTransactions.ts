@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 import { alchemy } from "@/lib/alchemy";
 import { AssetTransfersCategory, SortingOrder } from "alchemy-sdk";
 
@@ -17,7 +17,7 @@ export interface Transaction {
 }
 
 export function useTransactions() {
-  const { address } = useAccount();
+  const { address } = useConnection();
 
   return useQuery<Transaction[]>({
     queryKey: ["transactions", address],
