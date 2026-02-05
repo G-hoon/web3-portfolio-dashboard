@@ -1,7 +1,7 @@
 "use client";
 
-import { PieChart, Pie, Tooltip, ResponsiveContainer, Legend } from "recharts";
-import { TokenBalance, useTokenBalances } from "@/hooks/useTokenBalances";
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from "recharts";
+import { useTokenBalances } from "@/hooks/useTokenBalances";
 import { useWalletBalance } from "@/hooks/useWalletBalance";
 import { formatUnits } from "viem";
 
@@ -46,7 +46,7 @@ export default function PortfolioChart() {
   }
 
   if (tokens) {
-    tokens.forEach((token: TokenBalance) => {
+    tokens.forEach((token) => {
       const val = parseFloat(token.balance);
       if (val > 0) {
         chartData.push({
@@ -86,12 +86,12 @@ export default function PortfolioChart() {
               `${name} (${((value / total) * 100).toFixed(1)}%)`
             }
           >
-            {/* {chartData.map((_, index) => (
+            {chartData.map((_, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}
               />
-            ))} */}
+            ))}
           </Pie>
           <Tooltip
             contentStyle={{

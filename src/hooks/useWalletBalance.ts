@@ -1,9 +1,9 @@
 "use client";
 
-import { useBalance, useConnection } from "wagmi";
+import { useBalance, useAccount } from "wagmi";
 
 export function useWalletBalance() {
-  const { address } = useConnection();
+  const { address } = useAccount();
 
   const { data, isLoading, isError, refetch } = useBalance({
     address,

@@ -1,6 +1,6 @@
 "use client";
 
-import { useConnection } from "wagmi";
+import { useAccount } from "wagmi";
 import Header from "@/components/Header";
 import BalanceCard from "@/components/BalanceCard";
 import TokenList from "@/components/TokenList";
@@ -8,7 +8,7 @@ import TransactionHistory from "@/components/TransactionHistory";
 import PortfolioChart from "@/components/PortfolioChart";
 
 export default function Home() {
-  const { isConnected, address } = useConnection();
+  const { isConnected, address } = useAccount();
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white">

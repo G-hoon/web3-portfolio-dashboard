@@ -1,7 +1,7 @@
 "use client";
 
-import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { useConnection } from "wagmi";
+import { useQuery } from "@tanstack/react-query";
+import { useAccount } from "wagmi";
 import { alchemy } from "@/lib/alchemy";
 
 export interface TokenBalance {
@@ -13,8 +13,8 @@ export interface TokenBalance {
   decimals: number;
 }
 
-export function useTokenBalances(): UseQueryResult<TokenBalance[], Error> {
-  const { address } = useConnection();
+export function useTokenBalances() {
+  const { address } = useAccount();
 
   return useQuery<TokenBalance[]>({
     queryKey: ["tokenBalances", address],
