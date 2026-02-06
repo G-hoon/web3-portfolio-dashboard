@@ -2,6 +2,8 @@
 
 블록체인 지갑을 연결하고, 온체인 자산 데이터를 조회하여 포트폴리오를 시각화하는 대시보드입니다.
 
+**Live Demo:** https://web3-portfolio-dashboard-git-main-g-hoons-projects.vercel.app/
+
 ## 주요 기능
 
 - **지갑 연결** - MetaMask, WalletConnect, Coinbase Wallet 등 멀티 지갑 지원
@@ -12,16 +14,16 @@
 
 ## 기술 스택
 
-| 영역 | 기술 |
-|------|------|
-| Framework | Next.js (App Router) |
-| Language | TypeScript |
-| Web3 | wagmi, viem |
-| Wallet UI | RainbowKit |
-| 상태관리 | TanStack Query |
-| 차트 | Recharts |
-| 스타일 | Tailwind CSS |
-| Blockchain API | Alchemy SDK |
+| 영역           | 기술                 |
+| -------------- | -------------------- |
+| Framework      | Next.js (App Router) |
+| Language       | TypeScript           |
+| Web3           | wagmi, viem          |
+| Wallet UI      | RainbowKit           |
+| 상태관리       | TanStack Query       |
+| 차트           | Recharts             |
+| 스타일         | Tailwind CSS         |
+| Blockchain API | Alchemy SDK          |
 
 ## 시작하기
 
@@ -34,14 +36,14 @@
 
 ```bash
 # 의존성 설치
-npm install
+pnpm install
 
 # 환경 변수 설정
 cp .env.local.example .env.local
 # .env.local 파일에 API Key와 Project ID 입력
 
 # 개발 서버 실행
-npm run dev
+pnpm run dev
 ```
 
 [http://localhost:3000](http://localhost:3000)에서 확인할 수 있습니다.
