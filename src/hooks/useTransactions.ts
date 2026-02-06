@@ -1,6 +1,6 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { useAccount } from "wagmi";
 import { alchemy } from "@/lib/alchemy";
 import { AssetTransfersCategory, SortingOrder } from "alchemy-sdk";
@@ -19,7 +19,7 @@ export interface Transaction {
 export function useTransactions() {
   const { address } = useAccount();
 
-  return useQuery<Transaction[]>({
+  return useSuspenseQuery<Transaction[]>({
     queryKey: ["transactions", address],
     queryFn: async () => {
       if (!address) return [];
@@ -71,7 +71,6 @@ export function useTransactions() {
         .sort((a, b) => parseInt(b.blockNum, 16) - parseInt(a.blockNum, 16))
         .slice(0, 15);
     },
-    enabled: !!address,
     staleTime: 30_000,
   });
 }

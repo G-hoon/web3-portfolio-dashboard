@@ -1,6 +1,6 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { useAccount } from "wagmi";
 import { alchemy } from "@/lib/alchemy";
 
@@ -16,7 +16,7 @@ export interface TokenBalance {
 export function useTokenBalances() {
   const { address } = useAccount();
 
-  return useQuery<TokenBalance[]>({
+  return useSuspenseQuery<TokenBalance[]>({
     queryKey: ["tokenBalances", address],
     queryFn: async () => {
       if (!address) return [];
@@ -57,7 +57,6 @@ export function useTokenBalances() {
 
       return tokenDetails.filter((token) => parseFloat(token.balance) > 0);
     },
-    enabled: !!address,
     staleTime: 30_000,
   });
 }

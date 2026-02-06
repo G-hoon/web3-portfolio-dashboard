@@ -11,6 +11,8 @@
 - **ERC-20 토큰 목록** - 보유 토큰의 이름, 심볼, 로고, 잔액 표시
 - **트랜잭션 히스토리** - 최근 송금/수신 내역 및 Etherscan 링크 연동
 - **포트폴리오 시각화** - 자산 분포 도넛 차트
+- **자산 가치 추이** - ETH 보유량 기반 7일/30일 가치 변동 라인 차트
+- **실시간 가격** - CoinGecko API 기반 ETH 및 ERC-20 토큰 USD 가격 + 24h 변동률
 
 ## 기술 스택
 
@@ -22,8 +24,10 @@
 | Wallet UI      | RainbowKit           |
 | 상태관리       | TanStack Query       |
 | 차트           | Recharts             |
+| 날짜 처리      | dayjs                |
 | 스타일         | Tailwind CSS         |
 | Blockchain API | Alchemy SDK          |
+| 가격 API       | CoinGecko            |
 
 ## 시작하기
 
@@ -65,18 +69,24 @@ src/
 │   ├── providers.tsx       # Web3 Provider 통합
 │   └── globals.css         # 글로벌 스타일
 ├── components/
-│   ├── Header.tsx          # 헤더 + 지갑 연결 버튼
-│   ├── BalanceCard.tsx     # ETH 잔액 카드
-│   ├── TokenList.tsx       # ERC-20 토큰 목록
+│   ├── Header.tsx              # 헤더 + 지갑 연결 버튼
+│   ├── BalanceCard.tsx         # ETH 잔액 카드
+│   ├── TokenList.tsx           # ERC-20 토큰 목록
 │   ├── TransactionHistory.tsx  # 트랜잭션 히스토리
-│   └── PortfolioChart.tsx  # 자산 분포 차트
+│   ├── PortfolioChart.tsx      # 자산 분포 차트
+│   ├── PortfolioValueChart.tsx # 자산 가치 추이 차트
+│   ├── ErrorBoundary.tsx       # 에러 바운더리
+│   └── skeletons.tsx           # Suspense 스켈레톤 UI
 ├── hooks/
-│   ├── useWalletBalance.ts # ETH 잔액 조회
-│   ├── useTokenBalances.ts # ERC-20 토큰 잔액 조회
-│   └── useTransactions.ts  # 트랜잭션 조회
+│   ├── useWalletBalance.ts     # ETH 잔액 조회
+│   ├── useTokenBalances.ts     # ERC-20 토큰 잔액 조회
+│   ├── useTransactions.ts      # 트랜잭션 조회
+│   ├── useTokenPrices.ts       # 토큰 가격 조회
+│   └── useEthPriceHistory.ts   # ETH 가격 히스토리 조회
 └── lib/
-    ├── wagmi.ts            # wagmi 설정
-    └── alchemy.ts          # Alchemy SDK 설정
+    ├── wagmi.ts                # wagmi 설정
+    ├── alchemy.ts              # Alchemy SDK 설정
+    └── coingecko.ts            # CoinGecko API
 ```
 
 ## 배포

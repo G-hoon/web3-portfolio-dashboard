@@ -7,31 +7,7 @@ function shortenAddress(address: string) {
 }
 
 export default function TransactionHistory() {
-  const { data: transactions, isLoading, isError } = useTransactions();
-
-  if (isLoading) {
-    return (
-      <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6">
-        <h3 className="mb-4 text-lg font-semibold">트랜잭션 히스토리</h3>
-        <div className="space-y-3">
-          {[1, 2, 3, 4, 5].map((i) => (
-            <div
-              key={i}
-              className="h-14 animate-pulse rounded-lg bg-zinc-800"
-            />
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  if (isError) {
-    return (
-      <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6">
-        <p className="text-sm text-red-400">트랜잭션 조회 실패</p>
-      </div>
-    );
-  }
+  const { data: transactions } = useTransactions();
 
   if (!transactions || transactions.length === 0) {
     return (

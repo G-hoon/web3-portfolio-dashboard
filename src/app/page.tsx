@@ -1,11 +1,21 @@
 "use client";
 
+import { Suspense } from "react";
 import { useAccount } from "wagmi";
 import Header from "@/components/Header";
+import ErrorBoundary from "@/components/ErrorBoundary";
 import BalanceCard from "@/components/BalanceCard";
 import TokenList from "@/components/TokenList";
 import TransactionHistory from "@/components/TransactionHistory";
 import PortfolioChart from "@/components/PortfolioChart";
+import PortfolioValueChart from "@/components/PortfolioValueChart";
+import {
+  BalanceCardSkeleton,
+  PortfolioChartSkeleton,
+  PortfolioValueChartSkeleton,
+  TokenListSkeleton,
+  TransactionHistorySkeleton,
+} from "@/components/skeletons";
 
 export default function Home() {
   const { isConnected, address } = useAccount();
@@ -18,18 +28,43 @@ export default function Home() {
           <div className="space-y-6">
             {/* 상단: ETH 잔액 + 자산 분포 차트 */}
             <section className="grid gap-6 lg:grid-cols-2">
-              <BalanceCard />
-              <PortfolioChart />
+              <ErrorBoundary>
+                <Suspense fallback={<BalanceCardSkeleton />}>
+                  <BalanceCard />
+                </Suspense>
+              </ErrorBoundary>
+              <ErrorBoundary>
+                <Suspense fallback={<PortfolioChartSkeleton />}>
+                  <PortfolioChart />
+                </Suspense>
+              </ErrorBoundary>
+            </section>
+
+            {/* 자산 가치 추이 차트 */}
+            <section>
+              <ErrorBoundary>
+                <Suspense fallback={<PortfolioValueChartSkeleton />}>
+                  <PortfolioValueChart />
+                </Suspense>
+              </ErrorBoundary>
             </section>
 
             {/* 중단: ERC-20 토큰 목록 */}
             <section>
-              <TokenList />
+              <ErrorBoundary>
+                <Suspense fallback={<TokenListSkeleton />}>
+                  <TokenList />
+                </Suspense>
+              </ErrorBoundary>
             </section>
 
             {/* 하단: 트랜잭션 히스토리 */}
             <section>
-              <TransactionHistory />
+              <ErrorBoundary>
+                <Suspense fallback={<TransactionHistorySkeleton />}>
+                  <TransactionHistory />
+                </Suspense>
+              </ErrorBoundary>
             </section>
           </div>
         ) : (

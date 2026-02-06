@@ -22,19 +22,8 @@ interface ChartData {
 }
 
 export default function PortfolioChart() {
-  const { balance: ethBalance, isLoading: ethLoading } = useWalletBalance();
-  const { data: tokens, isLoading: tokensLoading } = useTokenBalances();
-
-  if (ethLoading || tokensLoading) {
-    return (
-      <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6">
-        <h3 className="mb-4 text-lg font-semibold">자산 분포</h3>
-        <div className="flex h-64 items-center justify-center">
-          <div className="h-48 w-48 animate-pulse rounded-full bg-zinc-800" />
-        </div>
-      </div>
-    );
-  }
+  const { balance: ethBalance } = useWalletBalance();
+  const { data: tokens } = useTokenBalances();
 
   const chartData: ChartData[] = [];
 

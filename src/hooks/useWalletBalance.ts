@@ -1,18 +1,19 @@
 "use client";
 
-import { useBalance, useAccount } from "wagmi";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { useAccount, useConfig } from "wagmi";
+import { getBalanceQueryOptions } from "@wagmi/core/query";
 
 export function useWalletBalance() {
   const { address } = useAccount();
+  const config = useConfig();
 
-  const { data, isLoading, isError, refetch } = useBalance({
-    address,
-  });
+  const { data, refetch } = useSuspenseQuery(
+    getBalanceQueryOptions(config, { address })
+  );
 
   return {
     balance: data,
-    isLoading,
-    isError,
     refetch,
   };
 }
