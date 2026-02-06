@@ -9,10 +9,12 @@ import TokenList from "@/components/TokenList";
 import TransactionHistory from "@/components/TransactionHistory";
 import PortfolioChart from "@/components/PortfolioChart";
 import PortfolioValueChart from "@/components/PortfolioValueChart";
+import RWADashboard from "@/components/RWADashboard";
 import {
   BalanceCardSkeleton,
   PortfolioChartSkeleton,
   PortfolioValueChartSkeleton,
+  RWADashboardSkeleton,
   TokenListSkeleton,
   TransactionHistorySkeleton,
 } from "@/components/skeletons";
@@ -45,6 +47,15 @@ export default function Home() {
               <ErrorBoundary>
                 <Suspense fallback={<PortfolioValueChartSkeleton />}>
                   <PortfolioValueChart />
+                </Suspense>
+              </ErrorBoundary>
+            </section>
+
+            {/* RWA 토큰 대시보드 */}
+            <section>
+              <ErrorBoundary>
+                <Suspense fallback={<RWADashboardSkeleton />}>
+                  <RWADashboard />
                 </Suspense>
               </ErrorBoundary>
             </section>

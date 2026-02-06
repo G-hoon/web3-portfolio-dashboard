@@ -43,6 +43,22 @@ export function TokenListSkeleton() {
   );
 }
 
+export function RWADashboardSkeleton() {
+  return (
+    <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6">
+      <h3 className="mb-4 text-lg font-semibold">RWA 토큰 (Real World Assets)</h3>
+      <div className="space-y-3">
+        {[1, 2, 3, 4].map((i) => (
+          <div
+            key={i}
+            className="h-16 animate-pulse rounded-lg bg-zinc-800"
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function TransactionHistorySkeleton() {
   return (
     <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6">
