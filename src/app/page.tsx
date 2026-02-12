@@ -10,6 +10,9 @@ import TransactionHistory from "@/components/TransactionHistory";
 import PortfolioChart from "@/components/PortfolioChart";
 import PortfolioValueChart from "@/components/PortfolioValueChart";
 import RWADashboard from "@/components/RWADashboard";
+import RealtimeTicker from "@/components/RealtimeTicker";
+import EventNotification from "@/components/EventNotification";
+import EventLog from "@/components/EventLog";
 import {
   BalanceCardSkeleton,
   PortfolioChartSkeleton,
@@ -28,6 +31,11 @@ export default function Home() {
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
         {isConnected && address ? (
           <div className="space-y-6">
+            {/* 실시간 시세 */}
+            <section>
+              <RealtimeTicker />
+            </section>
+
             {/* 상단: ETH 잔액 + 자산 분포 차트 */}
             <section className="grid gap-6 lg:grid-cols-2">
               <ErrorBoundary>
@@ -75,6 +83,14 @@ export default function Home() {
                 <Suspense fallback={<TransactionHistorySkeleton />}>
                   <TransactionHistory />
                 </Suspense>
+              </ErrorBoundary>
+            </section>
+
+            {/* 온체인 이벤트 */}
+            <EventNotification />
+            <section>
+              <ErrorBoundary>
+                <EventLog />
               </ErrorBoundary>
             </section>
           </div>
