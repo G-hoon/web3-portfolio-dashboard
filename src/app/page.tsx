@@ -14,6 +14,7 @@ import RealtimeTicker from "@/components/RealtimeTicker";
 import EventNotification from "@/components/EventNotification";
 import EventLog from "@/components/EventLog";
 import DeFiActivity from "@/components/DeFiActivity";
+import AIAnalysis from "@/components/AIAnalysis";
 import {
   BalanceCardSkeleton,
   PortfolioChartSkeleton,
@@ -93,6 +94,15 @@ export default function Home() {
               <ErrorBoundary>
                 <Suspense fallback={<TransactionHistorySkeleton />}>
                   <TransactionHistory />
+                </Suspense>
+              </ErrorBoundary>
+            </section>
+
+            {/* AI 포트폴리오 분석 */}
+            <section>
+              <ErrorBoundary>
+                <Suspense fallback={<div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6"><h3 className="text-lg font-semibold">AI 포트폴리오 분석</h3><p className="mt-4 text-sm text-zinc-500">로딩 중...</p></div>}>
+                  <AIAnalysis />
                 </Suspense>
               </ErrorBoundary>
             </section>

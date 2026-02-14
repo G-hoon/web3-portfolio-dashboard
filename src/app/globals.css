@@ -34,3 +34,156 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #52525b;
 }
+
+/* AI Markdown — Tailwind preflight 이후 적용 */
+@layer utilities {
+  .ai-markdown h1 {
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+    color: #fafafa !important;
+    line-height: 1.4 !important;
+  }
+
+  .ai-markdown h2 {
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.5rem !important;
+    padding-bottom: 0.375rem !important;
+    border-bottom: 1px solid #27272a !important;
+    color: #e4e4e7 !important;
+    line-height: 1.4 !important;
+  }
+
+  .ai-markdown h3 {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    margin-top: 1.25rem !important;
+    margin-bottom: 0.375rem !important;
+    color: #d4d4d8 !important;
+  }
+
+  .ai-markdown p {
+    margin-bottom: 0.625rem !important;
+    color: #a1a1aa !important;
+    line-height: 1.7 !important;
+  }
+
+  .ai-markdown strong {
+    color: #e4e4e7 !important;
+    font-weight: 600 !important;
+  }
+
+  .ai-markdown ul,
+  .ai-markdown ol {
+    margin-left: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+    color: #a1a1aa !important;
+  }
+
+  .ai-markdown ul {
+    list-style-type: disc !important;
+  }
+
+  .ai-markdown ol {
+    list-style-type: decimal !important;
+  }
+
+  .ai-markdown li {
+    margin-bottom: 0.25rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .ai-markdown li > ul,
+  .ai-markdown li > ol {
+    margin-top: 0.25rem !important;
+  }
+
+  .ai-markdown table {
+    width: 100% !important;
+    margin-top: 0.75rem !important;
+    margin-bottom: 1rem !important;
+    border-collapse: collapse !important;
+    font-size: 0.8125rem !important;
+    display: table !important;
+    border: 1px solid #27272a !important;
+    border-radius: 0.5rem !important;
+    overflow: hidden !important;
+  }
+
+  .ai-markdown thead {
+    display: table-header-group !important;
+  }
+
+  .ai-markdown tbody {
+    display: table-row-group !important;
+  }
+
+  .ai-markdown tr {
+    display: table-row !important;
+    border-bottom: 1px solid #27272a !important;
+  }
+
+  .ai-markdown th {
+    display: table-cell !important;
+    text-align: left !important;
+    padding: 0.5rem 0.75rem !important;
+    background: #18181b !important;
+    border: 1px solid #27272a !important;
+    color: #d4d4d8 !important;
+    font-weight: 600 !important;
+  }
+
+  .ai-markdown td {
+    display: table-cell !important;
+    padding: 0.5rem 0.75rem !important;
+    border: 1px solid #27272a !important;
+    color: #a1a1aa !important;
+  }
+
+  .ai-markdown tbody tr:hover {
+    background: #18181b !important;
+  }
+
+  .ai-markdown code {
+    background: #18181b !important;
+    padding: 0.125rem 0.375rem !important;
+    border-radius: 0.25rem !important;
+    font-size: 0.8125rem !important;
+    color: #a78bfa !important;
+  }
+
+  .ai-markdown pre {
+    background: #18181b !important;
+    border: 1px solid #27272a !important;
+    border-radius: 0.5rem !important;
+    padding: 0.75rem 1rem !important;
+    margin-bottom: 0.75rem !important;
+    overflow-x: auto !important;
+  }
+
+  .ai-markdown pre code {
+    background: transparent !important;
+    padding: 0 !important;
+    color: #d4d4d8 !important;
+  }
+
+  .ai-markdown hr {
+    border: none !important;
+    border-top: 1px solid #27272a !important;
+    margin: 1.25rem 0 !important;
+  }
+
+  .ai-markdown blockquote {
+    border-left: 3px solid #6366f1 !important;
+    padding-left: 0.75rem !important;
+    margin: 0.5rem 0 !important;
+    color: #a1a1aa !important;
+  }
+
+  .ai-markdown > *:first-child {
+    margin-top: 0 !important;
+  }
+}
