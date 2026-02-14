@@ -2,7 +2,7 @@
 
 블록체인 지갑을 연결하고, 온체인 자산 데이터를 조회하여 포트폴리오를 시각화하는 대시보드입니다.
 
-**Live Demo:** https://web3-portfolio-dashboard-git-main-g-hoons-projects.vercel.app/
+**Live Demo:** https://web3-portfolio-dashboard.vercel.app/
 
 ## 주요 기능
 
