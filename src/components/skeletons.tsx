@@ -59,6 +59,24 @@ export function RWADashboardSkeleton() {
   );
 }
 
+export function DeFiActivitySkeleton() {
+  return (
+    <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6">
+      <h3 className="mb-4 text-lg font-semibold">DeFi 활동</h3>
+      <div className="mb-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {[1, 2, 3, 4].map((i) => (
+          <div key={i} className="h-16 animate-pulse rounded-lg bg-zinc-800" />
+        ))}
+      </div>
+      <div className="space-y-3">
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="h-14 animate-pulse rounded-lg bg-zinc-800" />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function TransactionHistorySkeleton() {
   return (
     <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6">

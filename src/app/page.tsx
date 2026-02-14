@@ -13,12 +13,14 @@ import RWADashboard from "@/components/RWADashboard";
 import RealtimeTicker from "@/components/RealtimeTicker";
 import EventNotification from "@/components/EventNotification";
 import EventLog from "@/components/EventLog";
+import DeFiActivity from "@/components/DeFiActivity";
 import {
   BalanceCardSkeleton,
   PortfolioChartSkeleton,
   PortfolioValueChartSkeleton,
   RWADashboardSkeleton,
   TokenListSkeleton,
+  DeFiActivitySkeleton,
   TransactionHistorySkeleton,
 } from "@/components/skeletons";
 
@@ -73,6 +75,15 @@ export default function Home() {
               <ErrorBoundary>
                 <Suspense fallback={<TokenListSkeleton />}>
                   <TokenList />
+                </Suspense>
+              </ErrorBoundary>
+            </section>
+
+            {/* DeFi 활동 (Uniswap V3) */}
+            <section>
+              <ErrorBoundary>
+                <Suspense fallback={<DeFiActivitySkeleton />}>
+                  <DeFiActivity />
                 </Suspense>
               </ErrorBoundary>
             </section>
